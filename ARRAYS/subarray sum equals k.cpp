@@ -24,15 +24,15 @@ public:
         int result = 0;
         int sum = 0;
         map<int, int> mp;
-        mp.insert({0,1});
+        mp.insert({0,1});//inserting sum=0 with freq =1
         int n = nums.size();
         for(int i = 0; i<n; i++) {
-            sum += nums[i];
+            sum += nums[i];//calc sum
             
-            if(mp.count(sum-k))
-                result += mp[sum-k];
+            if(mp.find(sum-k)!=mp.end())  //If sum is in map .... then update result
+                result += mp[sum-k];//mp[sum-k]... jitni baar freq update hui hai
             
-            mp[sum]++;
+            mp[sum]++;// map update: if 'sum 'not present than store it otherwise 'update' freq
         }
         return result;  
         
