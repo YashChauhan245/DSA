@@ -41,7 +41,7 @@ public:
         if (low >= high) return cnt;
 
         int mid = (low + high) / 2;
-        cnt += mergeSort(arr, low, mid);
+        cnt += mergeSort(arr, low, mid);//adding cmt bcz we want to return int value...and merge function is of void
         cnt += mergeSort(arr, mid + 1, high);
         cnt += countPairs(arr, low, mid, high);
         merge(arr, low, mid, high);
