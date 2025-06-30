@@ -3,9 +3,9 @@ public:
     bool caneat(vector<int>& piles,int mid,int h){
         int actual_hrs=0;
         for (int i = 0; i < piles.size(); i++) {
-            actual_hrs += piles[i] / mid;
-            if (piles[i] % mid != 0) {
-                actual_hrs++;
+            actual_hrs += piles[i] / mid;   //  7/3=2
+            if (piles[i] % mid != 0) {      //7%3=1
+                actual_hrs++;             //total =3;
             }
         }
         return actual_hrs<=h;
