@@ -1,3 +1,6 @@
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
+
+
 class Solution {
 public:
     int findFirst(vector<int>& nums, int target) {
