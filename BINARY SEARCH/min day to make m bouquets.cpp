@@ -1,3 +1,6 @@
+https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/
+
+
 class Solution {
 public:
     int makeboq(vector<int>& bloomDay,int mid, int m, int k){
