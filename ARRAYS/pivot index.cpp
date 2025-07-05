@@ -1,3 +1,5 @@
+https://leetcode.com/problems/find-pivot-index/description/
+
 class Solution {
 public:
     int pivotIndex(vector<int>& nums) {
