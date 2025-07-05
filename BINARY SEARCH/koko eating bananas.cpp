@@ -1,3 +1,5 @@
+https://leetcode.com/problems/koko-eating-bananas/description/
+
 class Solution {
 public:
     bool caneat(vector<int>& piles,int mid,int h){
