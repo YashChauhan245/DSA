@@ -24,8 +24,8 @@ public:
         unordered_map<int,int>mp;
         for(int i=0;i<nums.size();i++){
             int ans=target-nums[i];
-            if(mp.find(ans)!=mp.end()){
-                return{mp[ans],i};
+            if(mp.find(ans)!=mp.end()){//mapping ans with its index
+                return{mp[ans],i}; //mp[ans] means ans(2) ka index
             }
             mp[nums[i]]=i;
 
