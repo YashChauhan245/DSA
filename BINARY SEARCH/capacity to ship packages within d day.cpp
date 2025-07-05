@@ -1,3 +1,6 @@
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/
+
+
 class Solution {
 public:
     bool canShip(vector<int>& weights, int mid, int days) {
