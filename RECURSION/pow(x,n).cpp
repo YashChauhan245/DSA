@@ -1,3 +1,5 @@
+https://leetcode.com/problems/powx-n/description/
+
 class Solution {
 public:
     double powhelper(double x, int n) {
