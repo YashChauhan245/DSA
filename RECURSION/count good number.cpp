@@ -1,3 +1,5 @@
+https://leetcode.com/problems/count-good-numbers/description/
+
 class Solution {
 public:
     const int M = 1e9+7;
