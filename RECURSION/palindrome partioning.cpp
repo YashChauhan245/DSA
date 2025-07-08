@@ -1,3 +1,5 @@
+https://leetcode.com/problems/palindrome-partitioning/description/
+
 class Solution {
 public:
     vector<vector<string>>result;
