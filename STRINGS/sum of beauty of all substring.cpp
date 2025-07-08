@@ -1,3 +1,5 @@
+https://leetcode.com/problems/sum-of-beauty-of-all-substrings/description/
+
 class Solution {
 public:
     int beautySum(string s) {
