@@ -51,8 +51,8 @@ public:
         }
 
         ListNode* middle = findMiddle(head);
-        ListNode* right = middle->next;
-        middle->next = nullptr;
+        ListNode* right = middle->next;   //right ka 1st element
+        middle->next = nullptr;      //left ke last element ke next ko null  
         ListNode* left = head;
 
         left = sortLL(left);
