@@ -25,7 +25,7 @@ public:
             temp->next = list2;
         }
 
-        return dummyNode->next;
+        return dummyNode->next;// direct returning dummy node leads to print -1....so return next
     }
 // middle
     ListNode* findMiddle(ListNode* head) {
