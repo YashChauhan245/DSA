@@ -25,7 +25,7 @@ public:
             }
         }
 
-        return st.empty();  // true only if all brackets matched
+        return st.empty();  // true only if all brackets matched ...else false
     }
 };
 
