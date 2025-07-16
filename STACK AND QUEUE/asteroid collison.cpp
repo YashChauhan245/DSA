@@ -43,7 +43,6 @@ public:
 
 
 APPROACH-2)using vector as stack 
-
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
@@ -67,7 +66,7 @@ public:
                 }
             }
 
-            if (!destroyed) {
+            if (ast!=0) {
                 result.push_back(ast);  //arr[i] is positive..just push in vector
             }
         }
