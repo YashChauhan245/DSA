@@ -1,6 +1,6 @@
 https://leetcode.com/problems/asteroid-collision/description/
 
-BRUTE APPROACH-->slightly hard to implement..
+BRUTE APPROACH-->using stack
 
 class Solution {
 public:
@@ -9,12 +9,12 @@ public:
 
         for (int i = 0; i < asteroids.size(); i++) {
             int ast = asteroids[i];
-            bool destroyed = false;
+            bool destroyed = false;// or can use ast=0 ....as used it vector
 
             // Check for collisions
             while (!st.empty() && ast < 0 && st.top() > 0) {
                 if (st.top() < -ast) {
-                    st.pop();  // right asteroid destroyed
+                    st.pop();  // arr[i]>st.top()
                 } else if (st.top() == -ast) {
                     st.pop();  // both destroy
                     destroyed = true;
@@ -42,4 +42,37 @@ public:
 };
 
 
-APPROACH-2)
+APPROACH-2)using vector as stack 
+
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        vector<int> result;  // using vector
+
+        for (int i = 0; i < asteroids.size(); i++) {
+            int ast = asteroids[i];
+
+            while (!result.empty() && ast < 0 && result.back() > 0) {
+                if (result.back() < abs(ast)) {
+                    result.pop_back();  // arr[i]>st.top()
+                    continue;
+                } else if (result.back() == abs(ast)) {
+                    result.pop_back();  //both destroy
+                    ast=0;//marks asteroid as destroyed
+                    break;
+                } else {
+                    //v.back()>arr[i]
+                    ast=0;//marks asteroid as destroyed
+                    break;
+                }
+            }
+
+            if (!destroyed) {
+                result.push_back(ast);  //arr[i] is positive..just push in vector
+            }
+        }
+
+        return result;
+    }
+};
+
