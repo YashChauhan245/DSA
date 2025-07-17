@@ -69,7 +69,7 @@ public:
         vector<int> ngee(n);
         stack<int> st;
         for (int i = n-1; i>=0; i--) {
-            while (!st.empty() && nums[st.top()] < nums[i])
+            while (!st.empty() && nums[st.top()] <= nums[i])
                 st.pop();
             ngee[i] = st.empty() ? n : st.top();
             st.push(i);
@@ -82,7 +82,7 @@ public:
         vector<int> pge(n);
         stack<int> st;
         for (int i=0; i<n; i++) {
-            while (!st.empty() && nums[st.top()] <= nums[i])
+            while (!st.empty() && nums[st.top()] < nums[i])
                 st.pop();
             pge[i] = st.empty() ? -1 : st.top();
             st.push(i);
@@ -112,5 +112,3 @@ public:
         return maxSum - minSum;
     }
 };
-
-
