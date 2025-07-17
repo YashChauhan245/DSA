@@ -1,6 +1,6 @@
 https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 
-BRUTE->TOW PASS SOLN
+BRUTE->TWO PASS SOLN
 
 class Solution {
 public:
