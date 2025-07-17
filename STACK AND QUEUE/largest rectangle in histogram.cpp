@@ -1,7 +1,7 @@
 https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 
 
-BRUTE ->
+BRUTE :
 int largestarea(int arr[], int n) {
   int maxArea = 0;
   for (int i = 0; i < n; i++) {
@@ -13,6 +13,9 @@ int largestarea(int arr[], int n) {
   }
   return maxArea;
 }
+
+
+
 APPROACH-1>TWO PASS SOLN
 
 class Solution {
