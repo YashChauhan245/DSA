@@ -1,6 +1,19 @@
 https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 
-BRUTE->TWO PASS SOLN
+
+BRUTE ->
+int largestarea(int arr[], int n) {
+  int maxArea = 0;
+  for (int i = 0; i < n; i++) {
+    int minHeight = INT_MAX;
+    for (int j = i; j < n; j++) {
+      minHeight = min(minHeight, arr[j]);
+      maxArea = max(maxArea, minHeight * (j - i + 1));
+    }
+  }
+  return maxArea;
+}
+APPROACH-1>TWO PASS SOLN
 
 class Solution {
 public:
@@ -49,26 +62,19 @@ class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
         stack<int> st;
-        int area = 0, n = heights.size();
+        int maxA = 0;
+        int n = heights.size();
 
-        for (int i = 0; i < n; i++) {
-            while (!st.empty() && heights[i] < heights[st.top()]) {
-                int bar = st.top(); st.pop();
-                int pse = st.empty() ? -1 : st.top();
-                int nse = i;
-                area = max(area, heights[bar] * (nse - pse - 1));
+        for (int i = 0; i <= n; i++) {
+            while (!st.empty() && (i == n || heights[st.top()] >= heights[i])) {
+                int height = heights[st.top()];
+                st.pop();
+                int width = st.empty() ? i : i - st.top() - 1;
+                maxA = max(maxA, height * width);
             }
             st.push(i);
         }
-
-        while (!st.empty()) {
-            int bar = st.top(); st.pop();
-            int pse = st.empty() ? -1 : st.top();
-            int nse = n;
-            area = max(area, heights[bar] * (nse - pse - 1));
-        }
-
-        return area;
+        return maxA;
     }
 };
 
