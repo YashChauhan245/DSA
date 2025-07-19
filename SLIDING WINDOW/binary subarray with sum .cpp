@@ -1,6 +1,6 @@
 https://leetcode.com/problems/binary-subarrays-with-sum/description/
 
-APPROACH-1) CUMULATIVE SUM + MAP 
+APPROACH-1) CUMULATIVE SUM + MAP (SAME LIKE SUBARRAY SUM EQUALS K)
 class Solution {
 public:
     int numSubarraysWithSum(vector<int>& nums, int goal) {
