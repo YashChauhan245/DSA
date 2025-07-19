@@ -8,12 +8,15 @@ class Solution {
         int sum=0;
         int maxsum=INT_MIN;
         while(j<arr.size()){
+          // calculation
             sum=sum+arr[j];
             if(j-i+1<k){
                 j++;
             }
             else if(j-i+1==k){
+              // ans store
                 maxsum=max(maxsum,sum);
+              //slide the window
                 sum=sum-arr[i];
                 i++;
                 j++;
