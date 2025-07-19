@@ -26,3 +26,40 @@ class Solution {
 
 OPTIMISED-USING SLIDING +DEQUE
 
+class Solution {
+  public:
+    vector<int> firstNegInt(vector<int>& arr, int k) {
+        int i=0;
+        int j=0;
+        vector<int>ans;
+        deque<int>dq;
+        int n=arr.size();
+        while(j<n){
+            // calculation
+            if(arr[j]<0){
+                dq.push_back(arr[j]);
+            }
+            if(j-i+1<k){
+                j++;
+            }
+            else if(j-i+1==k){
+                // store ans
+                if(!dq.empty()){
+                    ans.push_back(dq.front());
+                }
+                else{
+                    ans.push_back(0);
+                }
+                // slide the window
+                if(!dq.empty() && arr[i]==dq.front()){
+                    dq.pop_front();
+                }
+                i++;
+                j++;
+                
+            }
+        }
+        return ans;
+        
+    }
+};
