@@ -25,7 +25,7 @@ class Solution {
                 mp[txt[j]]--;
                 // if freq==0 -->count --;
                 if(mp[txt[j]]==0){
-                    count--;
+                    count--;  //count in nothing just no.of char (a,b->2)
                 }
             }
             if(j-i+1<k){
