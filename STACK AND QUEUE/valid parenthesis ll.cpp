@@ -33,7 +33,7 @@ public:
                 starStack.pop();
              }
             else {
-                // '*' is before '(', invalid
+                // '*' is before '(', invalid---->(**( IE NO CLOSING
                 return false;
             }
         }
