@@ -33,11 +33,56 @@ public:
                 starStack.pop();
              }
             else {
-                // '*' is before '(', invalid
+                // '*' is before '(', invalid--->(**( IE NO CLOSING
                 return false;
             }
         }
 
         return openStack.empty();
+    }
+};
+
+
+
+
+APPROACH-2)USING GREEDY
+
+class Solution {
+public:
+    bool checkValidString(string s) {
+        int open = 0;
+        int close = 0;
+        int n = s.length();
+        
+        //Left to Right - Check Open Brackets
+        for (int i = 0; i < n; i++) {
+
+            if (s[i] == '(' || s[i] == '*') {
+                open++;
+            } else {
+                open--;
+            }
+             //JAISE HI LESS THAN 0 AAYE RETURN FALSE; 
+            if (open < 0) {
+                return false;
+            }
+        }
+
+        //Right to Left - Check CLose Brackets
+        for (int i = n - 1; i >= 0; i--) {
+            
+            if (s[i] == ')' || s[i] == '*') {
+                close++;
+            } else {
+                close--;
+            }
+            
+            //JAISE HI LESS THAN 0 AAYE RETURN FALSE;
+            if (close < 0) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 };
