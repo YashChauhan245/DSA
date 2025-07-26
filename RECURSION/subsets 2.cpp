@@ -26,3 +26,26 @@ public:
     }
 };
 
+// **TREE**
+
+solve(i=0, temp=[])                          // push []
+ ├── j=0 → temp=[1]
+ │    solve(i=1, temp=[1])                   // push [1]
+ │     └── j=1 → temp=[2]
+ │          solve(i=2, temp=[1,2])           // push [1,2]
+ │           └── j=2 → temp=[1,2,2]
+ │                solve(i=3, temp=[1,2,2])   // push [1,2,2]
+ │                (return)
+ │          (backtrack to temp=[1,2])
+ │          j=2 is **skipped** (duplicate at same depth: j>i && 2==2)
+ │    (return)
+ ├── j=1 → temp=[2]
+ │    solve(i=2, temp=[2])                   // push [2]
+ │     └── j=2 → temp=[2,2]
+ │          solve(i=3, temp=[2,2])           // push [2,2]
+ │          (return)
+ │    (return)
+ └── j=2 is **skipped** (duplicate at same depth: j>0 && 2==2)
+
+(return)
+
