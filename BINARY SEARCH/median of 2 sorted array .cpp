@@ -39,6 +39,7 @@ public:
                 l=px+1;
             }
         }
+        // no median found -->like both arrays the emppty
         return 0.0;
     }
 };
