@@ -34,6 +34,6 @@ public:
         solve(s,curr,0);
         return result;
     }
-};https://leetcode.com/problems/palindrome-partitioning/description/
+};
 
 
