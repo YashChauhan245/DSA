@@ -17,6 +17,7 @@ public:
     //  initial queue is [1,NULL] -->after poping and printing 1 ->child of 1 [2,3] is pushed in queue now qeueue is [null,2,3]....
 
     // now front ==null -->so go in next line 
+            // ***HERE FRONT IS THE NODE ...AS Q.FRONT IS POPED***
             if (front == NULL) {
                 // push elements of one level then clear it for upcoming levels
                 result.push_back(level);
