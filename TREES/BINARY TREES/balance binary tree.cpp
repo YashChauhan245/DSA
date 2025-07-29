@@ -45,6 +45,11 @@ public:
     }
 
     bool isBalanced(TreeNode* root) {
-        return check(root) != -1;
+        int result = check(root);
+        if (result == -1) {
+            return false;  // tree is unbalanced
+        } else {
+            return true;   // tree is balanced
+        }
     }
 };
