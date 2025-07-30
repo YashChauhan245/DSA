@@ -36,6 +36,7 @@ public:
            // col.second is multiset in map 
           // traverisng each col/vertical levle from top to bootm
             for (auto& row : col.second) {
+                // position,start,end)
                 temp.insert(temp.end(), row.second.begin(), row.second.end());
             }
 
