@@ -33,7 +33,7 @@ public:
        //root hi lca hua to ...
         if (root == p || root == q)
             return root;
-
+       //left and right side seach kra
         TreeNode* left = lowestCommonAncestor(root->left, p, q);
         TreeNode* right = lowestCommonAncestor(root->right, p, q);
       
