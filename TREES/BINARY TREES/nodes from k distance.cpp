@@ -7,15 +7,15 @@ public:
         if(!root)
             return;
         
-        if(root->left)
+        if(root->left){
             parent[root->left] = root;
+            addParent(root->left);
+        }
         
-        addParent(root->left);
-        
-        if(root->right)
+        if(root->right){
             parent[root->right] = root;
-        
-        addParent(root->right);
+            addParent(root->right);
+        }
     }
     
     void collectKDistanceNodes(TreeNode* target, int k, vector<int>& result) {
