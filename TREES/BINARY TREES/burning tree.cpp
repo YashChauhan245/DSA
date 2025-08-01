@@ -1,6 +1,6 @@
 https://www.geeksforgeeks.org/problems/burning-tree/1
 
-APPROACH-1)USING 1 PASS
+APPROACH-1)USING 3 PASS
 class Solution {
   public:
     unordered_map<Node*, Node*> parent;
