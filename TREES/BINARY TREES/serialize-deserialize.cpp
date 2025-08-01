@@ -24,8 +24,7 @@ public:
         }
 
         // Optional: remove the last comma
-        if (!s.empty()) s.pop_back();
-
+        // if (!s.empty()) s.pop_back();
         return s;
     }
 
