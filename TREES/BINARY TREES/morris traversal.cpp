@@ -8,11 +8,11 @@ public:
         TreeNode* pre;
 
         while (curr != nullptr) {
-            if (curr->left == nullptr) {
-                result.push_back(curr->val);
-                curr = curr->right;
+            if (curr->left == nullptr) { //no more left
+                result.push_back(curr->val);//print root
+                curr = curr->right;//iterate to rigth child
             } else {
-                pre = curr->left;
+                pre = curr->left;//if left child hai -->to iterate kro left me hi
                 
                 while (pre->right != nullptr) {
                     pre = pre->right;
