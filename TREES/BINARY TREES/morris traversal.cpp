@@ -12,14 +12,16 @@ public:
                 result.push_back(curr->val);//print root
                 curr = curr->right;//iterate to rigth child
             } else {
-                pre = curr->left;//if left child hai -->to iterate kro left me hi
-                
+                pre = curr->left;//left child not null hau 
+                // to uske rghmost pe jao 
                 while (pre->right != nullptr) {
                     pre = pre->right;
                 }
-                
+                //rightmost full aa gya 
+                // isse main root(curr) se connect kryo
                 pre->right = curr;
                 TreeNode* temp = curr;
+                //curr ko left child pe bhejyo and link ko destroy kro
                 curr = curr->left;
                 temp->left = nullptr;
             }
