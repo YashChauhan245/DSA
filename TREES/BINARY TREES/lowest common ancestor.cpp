@@ -1,28 +1,5 @@
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
 
-BRUTE FORCE : O(3N)
-class Solution {
-public:
-    bool findPath(TreeNode* root, TreeNode* target, vector<TreeNode*>& path) {
-        if (root == NULL){
-            return false;
-        }
-        path.push_back(root);
-
-        if (root == target){
-            return true;
-        }
-        // Search in left or right subtree
-        if (findPath(root->left, target, path) || findPath(root->right, target, path)){
-            return true;
-        }
-
-        path.pop_back();  // backtrack
-        return false;
-    }
-
-
-
 OPTIMAL: 0(N)
 
 class Solution {
@@ -47,8 +24,3 @@ public:
             return right;
     }
 };
-
-
-
-
-OPTIMAL ->
