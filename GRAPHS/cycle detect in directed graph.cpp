@@ -48,5 +48,56 @@ class Solution {
 ****BFS***
 
 TOO MUCH TRICKY...SO USE TOPO SORT
+as if topo sort fails i.e there is a cycle as topo sort only works then there is no cycle
+
+class Solution {
+  public:
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(int N, vector<vector<int>>& edges) {
+        // Step 1: Convert edge list to adjacency list
+        vector<int> adj[N];
+        for (auto &e : edges) {
+            int u = e[0];
+            int v = e[1];
+            adj[u].push_back(v);
+        }
+        
+        // Step 2: Compute indegree of each vertex
+        vector<int> indegree(N, 0);
+        for (int u = 0; u < N; u++) {
+            for (int v : adj[u]) {
+                indegree[v]++;
+            }
+        }
+        
+        // Step 3: Push vertices with indegree 0 into queue
+        queue<int> que;
+        int count = 0; // number of processed nodes
+        for (int i = 0; i < N; i++) {
+            if (indegree[i] == 0) {
+                que.push(i);
+                count++;
+            }
+        }
+        
+        // Step 4: BFS (Kahn's Algorithm)
+        while (!que.empty()) {
+            int u = que.front();
+            que.pop();
+            
+            for (int v : adj[u]) {
+                indegree[v]--;
+                if (indegree[v] == 0) {
+                    que.push(v);
+                    count++;
+                }
+            }
+        }
+        
+        //If count != N → that means some nodes never got processed because their indegree never became 0
+        // which happens only when there’s a cycle.
+        return count != N;
+    }
+};
 
   
