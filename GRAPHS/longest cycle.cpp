@@ -19,7 +19,7 @@ public:
                 
                 dfs(v, edges, visited, dist, inRecursion);
 
-            } else if(v != -1 && inRecursion[v] == true) { //cycle
+            } else if(v != -1 && inRecursion[v] == true) { //cycle hai but stack wala visited hona chaiye
                 
                 result = max(result, dist[u] - dist[v] +1);
                 
