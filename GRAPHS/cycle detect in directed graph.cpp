@@ -72,7 +72,7 @@ class Solution {
         
         // Step 3: Push vertices with indegree 0 into queue
         queue<int> que;
-        int count = 0; // number of processed nodes
+        int count = 0; // number of processed nodes/visited nodes
         for (int i = 0; i < N; i++) {
             if (indegree[i] == 0) {
                 que.push(i);
@@ -96,8 +96,11 @@ class Solution {
         
         //If count != N → that means some nodes never got processed because their indegree never became 0
         // which happens only when there’s a cycle.
-        return count != N;
-    }
+        // return count != N;
+         if(count==N){
+          return false;
+         }
+         return false;
 };
 
   
