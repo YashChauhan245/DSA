@@ -10,7 +10,7 @@ public:
             
             visited[u] = true;
             inRecursion[u] = true;
-            
+            // index to node
             int v = edges[u];
             
             if(v != -1 && !visited[v]) {
