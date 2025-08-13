@@ -47,6 +47,6 @@ class Solution {
 
 ****BFS***
 
-TOO MUCH TRICKY TO USE TOPO SORT
+TOO MUCH TRICKY...SO USE TOPO SORT
 
   
