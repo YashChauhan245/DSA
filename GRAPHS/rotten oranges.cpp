@@ -31,7 +31,8 @@ public:
         };
         
         //Applying Multi-Source BFS
-        int time = 0;
+        //time=-1 is we are inc. time after exit from the loop so last level also contiruting in the time 
+        int time = -1;
         while(!que.empty()) {
             int n = que.size();
             //because we want to cover all neighbours of a node
@@ -56,6 +57,8 @@ public:
             time++;
         }
         
-        return (freshCount==0) ? time-1 : -1;
+        return (freshCount==0) ? time : -1;
     }
 };
+
+
