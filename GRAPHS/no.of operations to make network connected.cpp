@@ -44,6 +44,7 @@ public:
         int components = n;
         for(auto &vec : connections) {
             if(find(vec[0]) != find(vec[1])) {
+                //parent equal nhi aaya to just merge them
                 components--;
                 Union(vec[0], vec[1]);
             }
