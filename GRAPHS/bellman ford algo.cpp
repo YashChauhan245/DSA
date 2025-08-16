@@ -1,6 +1,6 @@
 https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
 
-t.c-->o(v*e)
+t.c-->o(v*e)//as at worst cases ...we areiterting/relax e edges v-1 time 
 s.c-->o(v)
 
 class Solution {
