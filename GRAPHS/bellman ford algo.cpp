@@ -1,5 +1,8 @@
 https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
 
+t.c-->o(v*e)
+s.c-->o(v)
+
 class Solution {
   public:
     vector<int> bellmanFord(int V, vector<vector<int>>& edges, int src) {
