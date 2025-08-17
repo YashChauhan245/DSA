@@ -71,7 +71,7 @@ public:
         vector<vector<int>> dist(m, vector<int>(n, INT_MAX));
         priority_queue<P, vector<P>, greater<P>> pq;
         
-        pq.push({1, {0,0}});   // path length starts from 1
+        pq.push({1, {0,0}});   // path length starts from 1 or we can have to add +1 in final lenght
         dist[0][0] = 1;
   
         while (!pq.empty()) {
