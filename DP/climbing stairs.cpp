@@ -30,7 +30,7 @@ https://leetcode.com/problems/climbing-stairs/
 //         if(n==0){
 //             return 1;
 //         }
-//         if(n<=){
+//         if(n<=0){
 //             return 0;
 //         }
 //         //step-3-->base case me agar ans present hai to just store it
