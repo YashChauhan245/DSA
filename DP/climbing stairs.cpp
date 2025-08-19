@@ -55,13 +55,10 @@ https://leetcode.com/problems/climbing-stairs/
 // class Solution {
 // public:
 //     int climbStairs(int n) {
-//         //create dp array 
-//         vector<int> dp(n+1,-1);
-//         //analyse base case
-//         dp[0]=1;
-//         dp[1]=1;this base case can be applied in both top down and recursive approach 
-//         bcz if we start loop from 1 then i-2 is out of bound
-//         //loop reverse as initially we are using n=3->n=0
+//         vector<int> dp(n+1, 0); 
+//         dp[0] = 1;
+//         dp[1] = 1;
+
 //         for (int i = 2; i <= n; i++) {
 //             dp[i] = dp[i-1] + dp[i-2];
 //         }
