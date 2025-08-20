@@ -26,26 +26,26 @@ https://leetcode.com/problems/triangle/
 
 //top down 
 
-// class Solution {
-// public:
-//     int solver(vector<vector<int>>& triangle,int &m,int i,int j,vector<vector<int>>&dp){
-//         if(i==m-1){
-//             return triangle[i][j];
-//         }
-//         if(dp[i][j]!=-1){
-//             return dp[i][j];
-//         }
-//         int ithans=triangle[i][j]+solver(triangle,m,i+1,j,dp);
-//         int iplusans=triangle[i][j]+solver(triangle,m,i+1,j+1,dp);
-//         dp[i][j]=min(ithans,iplusans);
-//         return dp[i][j];
-//     }
-//     int minimumTotal(vector<vector<int>>& triangle) {
-//         int m=triangle.size();
-//         vector<vector<int>> dp(m+1, vector<int>(m+1, -1));
-//         return solver(triangle,m,0,0,dp);
-//     }
-// };
+class Solution {
+public:
+    int solver(vector<vector<int>>& triangle,int &m,int i,int j,vector<vector<int>>&dp){
+        if(i==m-1){
+            return triangle[i][j];
+        }
+        if(dp[i][j]!=-100000){
+            return dp[i][j];
+        }
+        int ithans=triangle[i][j]+solver(triangle,m,i+1,j,dp);
+        int iplusans=triangle[i][j]+solver(triangle,m,i+1,j+1,dp);
+        dp[i][j]=min(ithans,iplusans);
+        return dp[i][j];
+    }
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int m=triangle.size();
+        vector<vector<int>> dp(m+1, vector<int>(m+1, -100000));//or can choose -2 as -1 are the output in tle case
+        return solver(triangle,m,0,0,dp);
+    }
+};
 
 
 //bottom down 
