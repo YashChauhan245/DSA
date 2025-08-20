@@ -61,7 +61,7 @@ public:
         dp[m-1][n-1]=grid[m-1][n-1];//jo bhi grid me destination hai 
         for(int i=m-1;i>=0;i--){
             for(int j=n-1;j>=0;j--){
-                if(i==m-1 &&j==n-1){
+                if(i==m-1 &&j==n-1){//or use m-2 in loop to and j=m-2 to ignore this
                     continue;
                 }
                 int rightsum=grid[i][j]+dp[i][j+1];
