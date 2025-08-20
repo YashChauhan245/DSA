@@ -55,7 +55,8 @@ https://leetcode.com/problems/minimum-path-sum/description/
 class Solution {
 public:
     int solver(vector<vector<int>>& grid,int &m,int &n,int i,int j){
-        vector<vector<int>>dp(m,vector<int>(n,1e9));//use 1e9 to avoid and choice is u can use n,n+1 and m or m+1;
+        vector<vector<int>>dp(m,vector<int>(n,1e9));//use 1e9 to avoid 
+//          and choice is u can use n,n+1 and m or m+1;
 //         if(i<0 ||i>=m ||j<0||j>=n)
 //             return 1e9;
         dp[m-1][n-1]=grid[m-1][n-1];//jo bhi grid me destination hai 
