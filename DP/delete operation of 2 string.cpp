@@ -60,7 +60,9 @@ public:
         vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
 
         // base cases
-        for (int i = 0; i <= n; i++) dp[i][m] = n - i;
+        for (int i = 0; i <= n; i++) dp[i][m] = n - i; //Here j == m means we’ve reached end of s2.
+// If s2 is finished, the only way to equalize is to delete everything left in s1.
+// That’s exactly n - i deletions (because s1[i:] has length n - i).
         for (int j = 0; j <= m; j++) dp[n][j] = m - j;
 
         // bottom-up filling
