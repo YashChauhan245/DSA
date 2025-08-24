@@ -58,36 +58,50 @@ https://leetcode.com/problems/shortest-common-supersequence/description/
 // };
 
 
-//****OPTIMISED using m+n-lcs *******
-//recursive
-// class Solution {
-// public:
-//     // Recursive solver using LCS idea
-//     string solver(string &s1, string &s2, int i = 0, int j = 0) {
-//         int n = s1.size(), m = s2.size();
+//bottom up 
+class Solution {
+public:
+    string shortestCommonSupersequence(string s1, string s2) {
+        int m = s1.size(), n = s2.size();
 
-//         // Base cases
-//         if (i == n) return s2.substr(j);
-//         if (j == m) return s1.substr(i);
+        // dp[i][j] = length of SCS for suffixes s1[i..] and s2[j..]
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
 
-//         // If characters match, take once and move both
-//         if (s1[i] == s2[j]) {
-//             return s1[i] + solver(s1, s2, i + 1, j + 1);
-//         } else {
-//             // If characters don't match, take the path that gives longer LCS
-//             // Compute remaining lengths recursively (like computing LCS)
-//             int len1 = solver(s1, s2, i + 1, j).size();
-//             int len2 = solver(s1, s2, i, j + 1).size();
+        // Base cases (if one string is exhausted)
+        for (int i = 0; i <= m; i++) dp[i][n] = m - i;
+        for (int j = 0; j <= n; j++) dp[m][j] = n - j;
 
-//             if (len1 <= len2)
-//                 return s1[i] + solver(s1, s2, i + 1, j);
-//             else
-//                 return s2[j] + solver(s1, s2, i, j + 1);
-//         }
-//     }
+        // Fill table backwards
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                if (s1[i] == s2[j])
+                    dp[i][j] = 1 + dp[i + 1][j + 1];
+                else
+                    dp[i][j] = 1 + min(dp[i + 1][j], dp[i][j + 1]);
+            }
+        }
 
-//     string shortestCommonSupersequence(string str1, string str2) {
-//         return solver(str1, str2, 0, 0);
-//     }
-// };
+        // Reconstruct the SCS (no reverse needed now)
+        string scs = "";
+        int i = 0, j = 0;
+        while (i < m && j < n) {
+            if (s1[i] == s2[j]) {
+                scs.push_back(s1[i]);
+                i++, j++;
+            } else if (dp[i + 1][j] <= dp[i][j + 1]) {
+                scs.push_back(s1[i]);
+                i++;
+            } else {
+                scs.push_back(s2[j]);
+                j++;
+            }
+        }
+        // Add remaining suffix
+        while (i < m) scs.push_back(s1[i++]);
+        while (j < n) scs.push_back(s2[j++]);
+
+        return scs;
+    }
+};
+
 
