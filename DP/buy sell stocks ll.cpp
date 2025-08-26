@@ -7,10 +7,10 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
 //         if(i==prices.size()){
 //             return 0;
 //         }
-//         if(flag==1){ //so we have to j  
-//             int j=-prices[i]+solver(prices,i+1,0);//profit=s-b=-b+s=-prices+sell()
+//         if(flag==1){ //so we have to buy
+//             int buy=-prices[i]+solver(prices,i+1,0);//profit=s-b=-b+s=-prices+sell()
 //             int skip=0+solver(prices,i+1,1);
-//             return max(j,skip);
+//             return max(buy,skip);
 //         }
 //         else{//flag is 0 we have to sell now
 //             int sell=prices[i]+solver(prices,i+1,1);
@@ -35,10 +35,10 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
 //         if(dp[i][flag]!=-1){
 //             return dp[i][flag]; 
 //         }
-//         if(flag==1){ //so we have to j  
-//             int j=-prices[i]+solver(prices,i+1,0,dp);//profit=s-b=-b+s=-prices+sell()
+//         if(flag==1){ //so we have to buy  
+//             int buy=-prices[i]+solver(prices,i+1,0,dp);//profit=s-b=-b+s=-prices+sell()
 //             int skip=0+solver(prices,i+1,1,dp);
-//             return dp[i][flag]=max(j,skip);
+//             return dp[i][flag]=max(buy,skip);
 //         }
 //         else{//flag is 0 we have to sell now
 //             int sell=prices[i]+solver(prices,i+1,1,dp);
@@ -63,10 +63,10 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
 //         vector<vector<int>>dp(n+1,vector<int>(2,0));
 //         for(int i=n-1;i>=0;i--){
 //             for(int j=0;j<2;j++){
-//                 if(j==1){ //so we have to j  
-//                     int j=-prices[i]+dp[i+1][0];
+//                 if(j==1){ 
+//                     int buy=-prices[i]+dp[i+1][0];
 //                     int skip=0+dp[i+1][1];
-//                     dp[i][j]=max(j,skip);
+//                     dp[i][j]=max(buy,skip);
 //                 }
 //                 else{//flag is 0 we have to sell now
 //                     int sell=prices[i]+dp[i+1][1];
