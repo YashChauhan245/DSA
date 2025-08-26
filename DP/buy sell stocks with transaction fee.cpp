@@ -1,1 +1,118 @@
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/
+
+
+
+//recursive
+// class Solution {
+// public:
+//     int solver(vector<int>&prices,int i,int flag,int fee){
+//         if(i==prices.size()){
+//             return 0;
+//         }
+//         if(flag==1){ 
+//             int buy=-prices[i]+solver(prices,i+1,0,fee);
+//             int skip=0+solver(prices,i+1,1,fee);
+//             return max(buy,skip);
+//         }
+//         else{
+//             int sell=prices[i]-fee+solver(prices,i+1,1,fee);//minus fee
+//             int dontsell=solver(prices,i+1,0,fee);
+//             return max(sell,dontsell);
+//         }
+//     }
+//     int maxProfit(vector<int>& prices,int fee) {
+//         return solver(prices,0,1,fee);
+//     }
+// };
+
+
+
+//top down 
+// class Solution {
+// public:
+//     int solver(vector<int>& prices, int i, int flag, int fee, vector<vector<int>>& dp) {
+//         if(i == prices.size()) return 0;
+//         if(dp[i][flag] != -1) return dp[i][flag];
+
+//         if(flag == 1) { // Can buy
+//             int buy = -prices[i] + solver(prices, i+1, 0, fee, dp);
+//             int skip = solver(prices, i+1, 1, fee, dp);
+//             dp[i][flag] = max(buy, skip);
+//         } else { // Can sell
+//             int sell = prices[i] - fee + solver(prices, i+1, 1, fee, dp);
+//             int dontsell = solver(prices, i+1, 0, fee, dp);
+//             dp[i][flag] = max(sell, dontsell);
+//         }
+
+//         return dp[i][flag];
+//     }
+
+//     int maxProfit(vector<int>& prices, int fee) {
+//         int n = prices.size();
+//         vector<vector<int>> dp(n+1, vector<int>(2, -1));
+//         return solver(prices, 0, 1, fee, dp);
+//     }
+// };
+
+
+
+
+//bottom up
+// class Solution {
+// public:  
+//     int solver(vector<int>&prices,int i,int flag,int fee){
+//         int n=prices.size();
+//         vector<vector<int>>dp(n+1,vector<int>(2,0));
+//         for(int i=n-1;i>=0;i--){
+//             for(int j=0;j<2;j++){
+//                 if(j==1){ 
+//                     int buy=-prices[i]+dp[i+1][0];
+//                     int skip=0+dp[i+1][1];
+//                     dp[i][j]=max(buy,skip);
+//                 }
+//                 else{
+//                     int sell=prices[i]-fee+dp[i+1][1];
+//                     int dontsell=dp[i+1][0];
+//                     dp[i][j]=max(sell,dontsell);
+//                 }
+//             }
+//         }
+//         return dp[0][1];
+//     }
+//     int maxProfit(vector<int>& prices,int fee) {
+//         return solver(prices,0,1,fee);
+//     }
+// };
+
+
+
+
+//space optimised
+
+
+class Solution {
+public:
+    int solveSO(vector<int>& prices, int fee,vector<vector<int>>& dp) {
+        int n = prices.size();
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = 0; j < 2; j++) {
+                if (j==1) {
+                    int buyProfit = -prices[i] + dp[1][0];
+                    int skipProfit = dp[1][1];            
+                    dp[0][j] = max(buyProfit, skipProfit);
+                } else {
+                    int sellProfit = prices[i]-fee + dp[1][1];
+                    int skipProfit = dp[1][0];           
+                    dp[0][j] = max(sellProfit, skipProfit);
+                }
+            }
+            dp[1] = dp[0]; // shift curr → ahead
+        }
+        return dp[0][1];
+    }
+
+    int maxProfit(vector<int>& prices,int fee) {
+        vector<vector<int>> dp(2, vector<int>(2, 0));
+        return solveSO(prices,fee,dp);
+    }
+};
