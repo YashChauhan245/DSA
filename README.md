@@ -3,7 +3,7 @@
 **Welcome to my Data Structures & Algorithms practice repository!**  
 *Daily solutions to LeetCode problems, organized by topic for systematic learning and easy revision.*
 
-⚡⚡LEETCODE PROFILE -> https://leetcode.com/u/Yash_Chauhan24/
+⚡LEETCODE PROFILE -> https://leetcode.com/u/Yash_Chauhan24/
 
 ## 📖 **About This Repository**
 
@@ -76,12 +76,11 @@ This repository documents my journey of solving **5+ LeetCode problems daily** t
 
 Each solution follows this **standardized structure**:
 
+Problem Link: [LeetCode URL]
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                               PROBLEM SOLUTION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Problem Link: [LeetCode URL]
-
 
 Brute Force Approach:
 [Explanation of the brute force approach]
@@ -91,6 +90,8 @@ Optimal Approach:
 
 ⏰ Time Complexity: O(...)
 🧠 Space Complexity: O(...)
+
+
 
 
 
