@@ -9,7 +9,7 @@
 
 > *"Practice makes perfect, but perfect practice makes champions."*
 
-This repository documents my journey of solving **5+ LeetCode problems daily** to build strong DSA foundations. Each solution includes detailed explanations, complexity analysis, and multiple approaches where applicable.
+This repository documents my journey of solving **2-3 LeetCode problems daily** to build strong DSA foundations. Each solution includes detailed explanations, complexity analysis, and multiple approaches where applicable.
 
 ### 🎯 **My Goals**
 | Goal | Description |
