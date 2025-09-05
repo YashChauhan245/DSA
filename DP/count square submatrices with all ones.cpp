@@ -123,7 +123,7 @@ public:
     int countSquares(vector<vector<int>>& grid) {
         m = grid.size();
         n = grid[0].size();
-        vector<vector<int>> dp(m, vector<int>(n, 0));
+        vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
         return solve(grid, dp);
     }
 };
