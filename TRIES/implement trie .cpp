@@ -60,7 +60,7 @@ public:
     bool startsWith(string prefix) {
         trieNode *crawler = root;
         int i = 0;
-        for (i = 0; i < prefix.length(); i++) { 
+        for (; i < prefix.length(); i++) { 
             int index = prefix[i] - 'a'; 
             
             if (!crawler->children[index]) 
