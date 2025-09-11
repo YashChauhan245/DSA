@@ -14,7 +14,7 @@ This repository documents my journey of solving **2-3 LeetCode problems daily** 
 ### 🎯 **My Goals**
 | Goal | Description |
 |------|-------------|
-| **🔥 Consistency** | Solve at least 3 problems daily |
+| **🔥 Consistency** | Solve at least 2 problems daily |
 | **⚡ Quality** | Write clean, well-documented C++ code |
 | **📈 Growth** | Track progress and improvement over time |
 | **🤝 Knowledge Sharing** | Help fellow developers learn DSA concepts |
@@ -29,6 +29,7 @@ This repository documents my journey of solving **2-3 LeetCode problems daily** 
 ├── 📂 Linked Lists/
 ├── 📂 Trees/
 ├── 📂 Graphs/
+├── 📂 Daily Question/
 ├── 📂 Dynamic Programming/
 ├── 📂 Sorting & Searching/
 ├── 📂 Stack & Queue/
