@@ -3,11 +3,9 @@ https://leetcode.com/problems/design-task-manager/description/?envType=daily-que
 // T.C. : add -> O(log n), edit -> O(log n), rmv -> O(1), execTop -> O(n log n) worst case
 // S.C. : O(n)
 class TaskManager {
-    typedef pair<int, int> Task; // (priority, taskId)
-
-    priority_queue<Task> maxHeap;                  // tasks sorted by priority, then taskId
-    unordered_map<int, int> taskPriorityMap;       // taskId -> current priority
-    unordered_map<int, int> taskOwnerMap;          // taskId -> userId
+    priority_queue<pair<int, int>> maxHeap;   // tasks sorted by priority, then taskId
+    unordered_map<int, int> taskPriorityMap;  // taskId -> current priority
+    unordered_map<int, int> taskOwnerMap;     // taskId -> userId
 
 public:
     // Initialize with a list of [userId, taskId, priority]
