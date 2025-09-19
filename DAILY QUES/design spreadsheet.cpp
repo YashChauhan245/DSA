@@ -1,6 +1,5 @@
 https://leetcode.com/problems/design-spreadsheet/?envType=daily-question&envId=2025-09-19
 
-
 class Spreadsheet {
 public:
     vector<vector<int>> sheet;
@@ -10,8 +9,9 @@ public:
     }
     
     void setCell(string cell, int value) {
-        int col = cell[0] - 'A';
+        int col = cell[0] - 'A'; //b-a->1
         int row = stoi(cell.substr(1)) - 1;
+        //substr(1)->for index 1-n (skiping char) for A12 &&-1 for converting 1 based indexing to 0
 
         sheet[row][col] = value;
 
@@ -36,7 +36,7 @@ public:
 
     int getValue(string formula) {
         //Example : "=X+Y"
-        string s = formula.substr(1); //remove =
+        string s = formula.substr(1);// for index 1-n (skiping char) for A12 
         int plusIdx = s.find('+');
 
         string left = s.substr(0, plusIdx);
