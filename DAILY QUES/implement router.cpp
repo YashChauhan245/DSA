@@ -65,7 +65,7 @@ public:
         auto it = destTimestamps.find(destination);
         if (it == destTimestamps.end() || it->second.empty())
             return 0;
-
+        // binary search +(upper-lower bound)
         int left = lower_bound(begin(it->second), end(it->second), startTime) - begin(it->second);//log(size of vec)
         int right = upper_bound(begin(it->second), end(it->second), endTime) - begin(it->second); //log(size of vec)
 
