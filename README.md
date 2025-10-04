@@ -9,12 +9,12 @@
 
 > *"Practice makes perfect, but perfect practice makes champions."*
 
-This repository documents my journey of solving **2-3 LeetCode problems daily** to build strong DSA foundations. Each solution includes detailed explanations, complexity analysis, and multiple approaches where applicable.
+This repository documents my journey of solving **1-2 LeetCode problems daily** to build strong DSA foundations. Each solution includes detailed explanations, complexity analysis, and multiple approaches where applicable.
 
 ### 🎯 **My Goals**
 | Goal | Description |
 |------|-------------|
-| **🔥 Consistency** | Solve at least 2 problems daily |
+| **🔥 Consistency** | Solve at least 1-2 problems daily |
 | **⚡ Quality** | Write clean, well-documented C++ code |
 | **📈 Growth** | Track progress and improvement over time |
 | **🤝 Knowledge Sharing** | Help fellow developers learn DSA concepts |
