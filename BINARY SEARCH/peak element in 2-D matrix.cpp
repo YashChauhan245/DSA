@@ -18,7 +18,6 @@ public:
                     maxRow = i;
                 }
             }
-
             int midVal = mat[maxRow][mid];
 
             bool leftIsBigger = false;
