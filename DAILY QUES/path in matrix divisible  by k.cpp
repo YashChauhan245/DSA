@@ -85,40 +85,47 @@ public:
 
 
 //BOTTOM-UP
+
 class Solution {
 public:
     int M = 1e9 + 7;
-
+    
     int numberOfPaths(vector<vector<int>>& grid, int k) {
-        int m = grid.size();
-        int n = grid[0].size();
+        int m = grid.size(), n = grid[0].size();
 
-        // dp[r][c][rem] = ways to reach (m-1, n-1) starting at (r,c) with remainder rem
+        // dp[row][col][rem]
         vector<vector<vector<int>>> dp(
             m, vector<vector<int>>(n, vector<int>(k, 0))
         );
 
-        // Base case: destination cell
-        for (int rem = 0; rem < k; rem++) {
-            dp[m - 1][n - 1][rem] = ((rem + grid[m - 1][n - 1]) % k == 0);
-        }
+        // Base Case: destination cell
+        int last = grid[m-1][n-1] % k;
+        dp[m-1][n-1][last] = 1;
 
-        // Fill table from bottom-right → top-left
-        for (int r = m - 1; r >= 0; r--) {
-            for (int c = n - 1; c >= 0; c--) {
-
-                if (r == m - 1 && c == n - 1) continue; // already initialized
+        // Fill bottom-up (reverse loops)
+        for (int row = m - 1; row >= 0; row--) {
+            for (int col = n - 1; col >= 0; col--) {
+                
+                if (row == m-1 && col == n-1) continue; // already set
 
                 for (int rem = 0; rem < k; rem++) {
 
-                    int newRem = (rem + grid[r][c]) % k;
+                    // new remainder after adding current cell
+                    int newRem = (rem + grid[row][col]) % k;
 
                     long long ways = 0;
 
-                    if (r + 1 < m) ways += dp[r + 1][c][newRem];
-                    if (c + 1 < n) ways += dp[r][c + 1][newRem];
+                    // Move down
+                    if (row + 1 < m) {
+                        ways += dp[row + 1][col][newRem];
+                    }
 
-                    dp[r][c][rem] = ways % M;
+                    // Move right
+                    if (col + 1 < n) {
+                        ways += dp[row][col + 1][newRem];
+                    }
+
+                    dp[row][col][rem] = ways % M;
                 }
             }
         }
