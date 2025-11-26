@@ -16,7 +16,7 @@ public:
         // Destination
         if (r == m - 1 && c == n - 1)
             return ((rem + grid[r][c]) % k == 0);
-
+        //MODULE AFTER ADDING ANY ELEMENT
         int newRem = (rem + grid[r][c]) % k;
 
         // Move down
