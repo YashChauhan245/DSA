@@ -2,6 +2,7 @@ https://leetcode.com/problems/combination-sum/
 
 class Solution {
 public:
+
     vector<vector<int>>result;
     void solve(vector<int>& candidates, int target,vector<int>temp,int i){
         if(target==0){
