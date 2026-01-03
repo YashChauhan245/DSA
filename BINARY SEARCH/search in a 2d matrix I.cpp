@@ -1,4 +1,4 @@
-https://leetcode.com/problems/search-a-2d-matrix/description/
+https://leetcode.com/problems/search-a-2d-matrix/?envType=study-plan-v2&envId=binary-search
 
 
 class Solution {
