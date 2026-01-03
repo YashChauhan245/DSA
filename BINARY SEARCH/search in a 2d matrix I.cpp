@@ -10,7 +10,7 @@ public:
         int e=m*n-1;
         while(s<=e){
             int mid=s+(e-s)/2;
-            if(matrix[mid/n][mid%n]>target){
+            if(matrix[mid/n][md%n]>target){
                 e=mid-1;
             }
             else if(matrix[mid/n][mid%n]<target){
