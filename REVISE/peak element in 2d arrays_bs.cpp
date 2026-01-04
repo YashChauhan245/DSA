@@ -1,5 +1,14 @@
 https://leetcode.com/problems/find-a-peak-element-ii/
 
+// Algo:
+// take 2 col/row (leftmost and rightmost)
+// find mid coln
+// find max element from mid row 
+// compare in all 4 directions 
+// if maxlel<left shift->e=mid (means left is >all element of mid)
+// if maxele>right shift->s=mid+1
+// and so on...
+
 class Solution {
 public:
     vector<int> findPeakGrid(vector<vector<int>>& mat) {
@@ -43,3 +52,4 @@ public:
         return {-1, -1};
     }
 };
+
