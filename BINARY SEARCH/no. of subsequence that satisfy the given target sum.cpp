@@ -12,7 +12,8 @@ public:
         
         //1. Sort
         sort(begin(nums), end(nums));
-        
+
+        //2.pre-computing power to avoid tle 
         vector<int> power(n);
         power[0] = 1;
         
@@ -20,7 +21,7 @@ public:
             power[i] = (power[i-1] * 2) % M;
         }   
         
-        //2. l = 0, r = n-1
+        //3. l = 0, r = n-1 and then just 2^power(r-l)
         int l = 0, r = n-1;
         int result = 0;
         while(l <= r) {
