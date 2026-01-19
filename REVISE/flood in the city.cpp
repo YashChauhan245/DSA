@@ -1,5 +1,6 @@
 https://leetcode.com/problems/avoid-flood-in-the-city/submissions/1794625420/?envType=daily-question&envId=2025-10-07
 
+
 class Solution {
 public:
     vector<int> avoidFlood(vector<int>& rains) {
