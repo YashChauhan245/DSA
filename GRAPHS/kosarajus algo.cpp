@@ -1,6 +1,6 @@
 https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
 
-//Kosaraju's Algorithm :     Time  : O(V+E), V = # vertices, E = # edges , Space : O(V)
+//Kosaraju's Algorithm : Time  : O(V+E), V = # vertices, E = # edges , Space : O(V)
 class Solution
 {
 	public:
