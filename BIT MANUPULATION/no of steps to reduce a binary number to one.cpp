@@ -1,6 +1,7 @@
 https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/description/?envType=daily-question&envId=2026-02-26
 
-
+trick--> if even (right most will be 0) --> so we need to divide by 2 so just pop the rightmost 0
+         if odd (rightmost will be 1) --> iterate from right and when the 1st 0 comes just turn it to 1 and make all right 1s to 0 
 
 //Approach-1 (Simple simulation - Do what is beinhg asked)
 //T.C : O(n^2)
