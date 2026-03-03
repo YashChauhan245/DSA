@@ -73,15 +73,15 @@ public:
         int n = nums.size();
         vector<int> result(n);
         result[0] = 1;
-        
+        //left to right
         for(int i = 1; i<nums.size(); i++) {
             result[i] = result[i-1]*nums[i-1];
         }
-        
+        //right to left 
         int right = 1;
         for(int i = n-1; i>=0; i--) {
             result[i] = result[i]*right;
-            right *= nums[i];
+            right *= nums[i]; //imp step 
         }
         
         return result;
