@@ -1,7 +1,7 @@
 https://leetcode.com/problems/3sum/
 
 //T.C : O(n^2)
-//S.C : O(1)
+//S.C : O(1) This space is only used to store the answer. We are not using any extra space to solve this problem. So, from that perspective, space complexity can be written as O(1).
 
 // steps: 1)sort 2)n2+n3=-n1 && before fixing n1 check duplicates too 3)remove duplicates in 2sum 
 class Solution {
