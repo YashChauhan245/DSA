@@ -19,7 +19,7 @@ public:
 };
 
 
-optimised->o(k)
+// optimised->o(k)
 
 class Solution {
 public:
@@ -32,3 +32,13 @@ public:
         return ones;
     }
 };
+
+//T.C : O(k) -> Where k = number of set bits (1s) in input 'n'
+//S.C : O(1)
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        return __builtin_popcount(n);
+    }
+};
+
