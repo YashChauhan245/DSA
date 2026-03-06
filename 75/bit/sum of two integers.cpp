@@ -6,10 +6,11 @@ tc,sc-->both o(1)
 class Solution {
 public:
     int getSum(int a, int b) {
-        uint32_t carry=a&b;   //so carry must sotre positive value only
+        uint32_t carry=a&b;   //so carry must store positive value only
         int sumwithoutcarry=a^b;
         int newcarry=carry<<1;
-
+       //return sumwithout carry if carry 0 
+      // else calc till carry becomes zero
         while(carry!=0){
             carry=sumwithoutcarry & newcarry;
             sumwithoutcarry=sumwithoutcarry^newcarry;
