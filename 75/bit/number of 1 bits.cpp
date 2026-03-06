@@ -25,7 +25,7 @@ class Solution {
 public:
     int hammingWeight(int n) {
         int ones = 0;
-        while(n){
+        while(n!=0){
             n = n & (n - 1);
             ones++;
         }
