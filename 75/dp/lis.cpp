@@ -57,24 +57,55 @@ https://leetcode.com/problems/longest-increasing-subsequence/
 
 //bottom up
 
+// class Solution {
+// public:
+//     int solver(vector<int>&nums,int i,int p){
+//         int n=nums.size();
+//         vector<vector<int>>dp(n+1,vector<int>(n+1,0));
+//         for(int i=n-1;i>=0;i--){
+//             for(int j=i-1;j>=-1;j--){
+//                 int take=0;
+//                 if(j==-1 ||nums[i]>nums[j]){
+//                 take=1+dp[i+1][i+1];
+//                 }
+//                 int skip=dp[i+1][j+1];
+//                 dp[i][j+1]=max(take,skip);
+//             }
+//         }
+//         return dp[0][0];
+//     }
+//     int lengthOfLIS(vector<int>& nums){
+//         return solver(nums,0,-1);
+//     }
+// };
+
+
+//space 
 class Solution {
 public:
-    int solver(vector<int>&nums,int i,int p){
-        int n=nums.size();
-        vector<vector<int>>dp(n+1,vector<int>(n+1,0));
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<int> next(n+1,0);
+        vector<int> curr(n+1,0);
+
         for(int i=n-1;i>=0;i--){
-            for(int j=i-1;j>=-1;j--){
-                int take=0;
-                if(j==-1 ||nums[i]>nums[j]){
-                take=1+dp[i+1][i+1];
+            for(int prev=i-1;prev>=-1;prev--){
+                
+                int take = 0;
+                //update next prev acc to bottom up 
+                if(prev==-1 || nums[i] > nums[prev]){
+                    take = 1 + next[i+1];
                 }
-                int skip=dp[i+1][j+1];
-                dp[i][j+1]=max(take,skip);
+
+                int skip = next[prev+1];
+
+                curr[prev+1] = max(take,skip);
             }
+
+            next = curr;
         }
-        return dp[0][0];
-    }
-    int lengthOfLIS(vector<int>& nums){
-        return solver(nums,0,-1);
+
+        return next[0];
     }
 };
