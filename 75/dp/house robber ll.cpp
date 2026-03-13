@@ -69,7 +69,7 @@ public:
 //     int solve(vector<int>& nums, int s, int e) {
 //         int n = nums.size();
 //         if (s > e) return 0;               
-//         vector<int>dp(n+2,0);
+//         vector<int>dp(n+2,0);   //1-D bcz only i is changing
 
 //         for(int i=e;i>=s;i--){
 //             int includeAns = nums[i] + dp[i+ 2]; 
