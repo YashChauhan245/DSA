@@ -8,7 +8,7 @@ public:
     void DFS(Node* node, Node* clone_node, vector<Node*>& visited) {
         visited[node->val] = clone_node;
         
-        for(Node* x : node->neighbors) {
+        for(Node* x : node->neighbors) {   //neighbour : original neighbours
             if(visited[x->val] == NULL) {
                 Node* clone = new Node(x->val);
                 clone_node->neighbors.push_back(clone);
