@@ -13,8 +13,8 @@ public:
         if(heights[i][j] < prevCellVal || visited[i][j])
             return;
 
-        visited[i][j] = true;
-        for(auto &dir : directions) {
+        visited[i][j] = true; //mrk true
+        for(auto &dir : directions) {  //expand for other direction
             int i_ = i + dir[0];
             int j_ = j + dir[1];
 
@@ -41,7 +41,7 @@ public:
 
         for(int j = 0; j < n; j++) {
             DFS(heights, 0, j, INT_MIN, pacificVisited); //Top Row
-            DFS(heights, m-1, j, INT_MIN, atlanticVisited); //Top Row
+            DFS(heights, m-1, j, INT_MIN, atlanticVisited); //bottom Row
         }
 
         //First col and last column
@@ -51,8 +51,8 @@ public:
             DFS(heights, i, 0, INT_MIN, pacificVisited); //First column
             DFS(heights, i, n-1, INT_MIN, atlanticVisited); //Last Column
         }
-
-
+ 
+        //ans store
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
                 if(pacificVisited[i][j] && atlanticVisited[i][j]) {
