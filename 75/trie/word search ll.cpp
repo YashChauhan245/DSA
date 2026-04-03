@@ -1,6 +1,9 @@
 https://leetcode.com/problems/word-search-ii/
 
-
+/*1)make trie struct ->bool eow,children array ,string for storing word (in last node)
+  2)new node function and insert all words 
+  3)simple dfs and backstracking and check these words
+*/
 //Approach-1 (Using string in struct)
 class Solution {
 public:
