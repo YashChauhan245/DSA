@@ -32,7 +32,9 @@ public:
         pCrawl->endOfWord = true;
         pCrawl->word = str;
     }
-
+ 
+   //grid me traverse krte hue trie se pucho ki kya uske pass grid wala child hai ....
+   //gird ->'o' then ask root is 'o' in trie? yes then traverse in grid ( 4 direction)...now grid pointer at 'a' so ask trie for 'a' child ...and so on 
     void DFS(vector<vector<char>>& board, int i, int j, trieNode* root) {
         if(i<0 || i >= r || j<0 || j >= c || board[i][j] == '$' || root->children[board[i][j]- 'a'] == NULL) {
             return;
