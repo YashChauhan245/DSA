@@ -2,59 +2,56 @@ https://leetcode.com/problems/course-schedule/description/
 
 class Solution {
 public:
-    
-    bool topologicalSortCheck(unordered_map<int, vector<int>> &adj, int n, vector<int> &indegree) {
-        queue<int> que;
-        
+
+    bool topoCheck(vector<vector<int>>& adj, int n, vector<int>& indegree) {
+        queue<int> q;
         int count = 0;
-        //storing element that have by default 0 indegree
-        for(int i = 0; i<n; i++) {
+
+        // Step 1: Push all nodes with indegree 0
+        for(int i = 0; i < n; i++) {
             if(indegree[i] == 0) {
+                q.push(i);
                 count++;
-                que.push(i);
             }
         }
-        
-        
-        while(!que.empty()) {
-            int u = que.front();
-            que.pop();
-            
-            for(int &v : adj[u]) {
-                
+
+        // Step 2: BFS (Kahn's Algorithm)
+        while(!q.empty()) {
+            int u = q.front();
+            q.pop();
+
+            // Traverse all neighbors
+            for(int i = 0; i < adj[u].size(); i++) {
+                int v = adj[u][i];
+
                 indegree[v]--;
-                
+
                 if(indegree[v] == 0) {
+                    q.push(v);
                     count++;
-                    que.push(v);
-                }              
-            }          
+                }
+            }
         }
-        
-        if(count == n) //I was able to visit all nodes (course)
-            return true; //i.e. I was able to finish all courses
-        
-        return false; //means there was a cycle and I couldn't complete all courses
+
+        // Step 3: Check if all nodes visited
+        if(count == n) return true;
+        return false;
     }
-    
+
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        
-        unordered_map<int, vector<int>> adj; //for storing given things       
-        vector<int> indegree(numCourses, 0); //kahn's algo
-        
-        for(auto &vec : prerequisites) {
-            int a = vec[0];
-            int b = vec[1];
-            
-            //b ---> a
+        vector<vector<int>> adj(numCourses);
+        // Indegree array
+        vector<int> indegree(numCourses, 0);
+        // Build graph
+        for(int i = 0; i < prerequisites.size(); i++) {
+            int a = prerequisites[i][0];
+            int b = prerequisites[i][1];
+
+            // b → a
             adj[b].push_back(a);
-            
-            //arrow ja raha hai 'a' me
             indegree[a]++;
         }
-             
-        //if cycle is present, not possible
-        
-        return topologicalSortCheck(adj, numCourses, indegree);
+
+        return topoCheck(adj, numCourses, indegree);
     }
 };
