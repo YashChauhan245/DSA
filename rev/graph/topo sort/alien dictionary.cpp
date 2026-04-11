@@ -1,0 +1,80 @@
+https://takeuforward.org/plus/dsa/problems/alient-dictionary?tab=description&source=blind-75
+
+class Solution {
+private:
+
+    vector<int> topoSort(int V, vector<int> adj[]) {
+
+        vector<int> indegree(V, 0);
+
+        for (int i = 0; i < V; i++) {
+            for (auto neighbor : adj[i]) {
+                indegree[neighbor]++;
+            }
+        }
+
+        // Queue to store all vertices with indegree = 0
+        queue<int> q;
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0) {
+                q.push(i);
+            }
+        }
+
+        vector<int> topo; 
+
+        // Process until queue is empty
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+
+            // Add this node to result
+            topo.push_back(node);
+
+            // For each neighbor, decrease its indegree
+            for (auto neighbor : adj[node]) {
+                indegree[neighbor]--;
+                // If indegree becomes 0, push it into the queue
+                if (indegree[neighbor] == 0) {
+                    q.push(neighbor);
+                }
+            }
+        }
+
+        return topo;
+    }
+
+
+
+    // Function to find the order of characters in the alien dictionary
+    string findOrder(string dict[], int N, int K) {
+        // Graph represented as adjacency list
+        vector<int> adj[K];
+
+        // Build graph by comparing adjacent words in dictionary
+        for (int i = 0; i < N - 1; i++) {
+            string s1 = dict[i];
+            string s2 = dict[i + 1];
+            int len = min(s1.size(), s2.size());
+
+            // Find the first different character and create edge
+            for (int ptr = 0; ptr < len; ptr++) {
+                if (s1[ptr] != s2[ptr]) {
+                    adj[s1[ptr] - 'a'].push_back(s2[ptr] - 'a'); //node from s1 to s2
+                    break; // only the first mismatch matters
+                }
+            }
+        }
+
+        // Perform topological sort on the graph
+        vector<int> topo = topoSort(K, adj);
+
+        // Convert numeric values back to characters
+        string ans = "";
+        for(int i = 0; i < topo.size(); i++) {
+            int node = topo[i];
+            ans += char(node + 'a');
+        }
+        return ans;
+    }
+};
