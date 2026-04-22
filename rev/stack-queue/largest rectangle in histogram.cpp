@@ -47,7 +47,7 @@ public:
 class Solution {
   public:
     int largestRectangleArea(vector<int> &histo) {
-        stack<int> st;
+        stack<int> st;//index store
         int maxA = 0;  
         int n = histo.size();
 
@@ -61,7 +61,7 @@ class Solution {
                 if (st.empty()) {
                     width = i; // All bars before were higher
                 } else {
-                    width = i - st.top() - 1; // Width between current index and index at top of stack
+                    width = i - st.top() - 1; //nse-->i && pse->st.top()
                 }
 
                 maxA = max(maxA, width * height);
