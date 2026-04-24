@@ -4,21 +4,36 @@ https://leetcode.com/problems/making-a-large-island/description/
 //DSU(BEST)
 //T.C : O(m*n * alpha(m*n))
 //S.C : O(m*n)
+
+/*steps 
+1)Treat each cell as a node (DSU)
+Map (i, j) → i*n + j
+2)Build islands
+For every 1, union with adjacent 1s
+Store size of each component
+3)Find current max island
+Check size of all 1 components
+4)Try flipping each 0
+Collect unique neighboring components
+Sum their sizes + 1 (flipped cell)
+5)Return maximum */
+
 class Solution {
 public:
     vector<int> parent, size;
     vector<vector<int>> directions{{1,0},{-1,0},{0,1},{0,-1}};
+
     void init(int n) {
         parent.resize(n);
         size.assign(n, 1);
         for (int i = 0; i < n; i++) {
-            parent[i] = i;
+            parent[i] = i; // initialize DSU
         }
     }
 
     int find(int x) {
         if (parent[x] == x) return x;
-        return parent[x] = find(parent[x]);
+        return parent[x] = find(parent[x]); // path compression
     }
 
     void Union(int x, int y) {
@@ -26,6 +41,7 @@ public:
         int rootY = find(y);
         if (rootX == rootY) return;
 
+        // union by size
         if (size[rootX] > size[rootY]) {
             parent[rootY] = rootX;
             size[rootX] += size[rootY];
@@ -35,9 +51,8 @@ public:
         }
     }
 
-    // Get size of component
     int getSize(int x) {
-        return size[find(x)];
+        return size[find(x)]; // size of connected component
     }
 
     int largestIsland(vector<vector<int>>& grid) {
@@ -47,26 +62,26 @@ public:
 
         int maxArea = 0;
 
-        // Step 1: connect all 1s
+        // Step 1: connect all adjacent 1s
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
-                    int idx = i * n + j;
+                    int idx = i * n + j; // map 2D -> 1D
                     for (auto &dir : directions) {
                         int ni = i + dir[0];
                         int nj = j + dir[1];
 
                         if (ni >= 0 && ni < n && nj >= 0 && nj < n && grid[ni][nj] == 1) {
-                            int nidx = ni * n + nj;
-                            Union(idx, nidx);
+                            Union(idx, ni * n + nj);
                         }
                     }
                 }
             }
         }
 
-        // Step 2: max existing island
+        // Step 2: find max existing island
         for (int i = 0; i < totalCells; i++) {
+            // map 1D index back to 2D: row = i/n, col = i%n
             if (grid[i / n][i % n] == 1) {
                 maxArea = max(maxArea, getSize(i));
             }
@@ -76,7 +91,7 @@ public:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 0) {
-                    unordered_set<int> parents;
+                    unordered_set<int> parents; // unique components
 
                     for (auto &dir : directions) {
                         int ni = i + dir[0];
@@ -87,14 +102,16 @@ public:
                         }
                     }
 
-                    int newSize = 1;
+                    int newSize = 1; // include flipped cell
                     for (auto p : parents) {
                         newSize += size[p];
                     }
+
                     maxArea = max(maxArea, newSize);
                 }
             }
         }
+
         return maxArea;
     }
 };
