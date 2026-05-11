@@ -14,7 +14,7 @@ public:
         mp[0] = -1;
         for(int i = 0; i<n; i++) {
            
-            currSum += (nums[i] == 1) ? 1 : -1;
+            currSum += (nums[i] == 1) ? 1 : -1;//nums[i]==0 then sum-1; else sum+1  
             
             if(mp.find(currSum) != mp.end()) {
                 maxL = max(maxL, i-mp[currSum]);
