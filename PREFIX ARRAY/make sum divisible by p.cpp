@@ -1,5 +1,11 @@
 https://leetcode.com/problems/make-sum-divisible-by-p/
 
+// step-1) target=sum&p
+// step-2) find sum from 0 to i-->prev 
+// step-3) find sum from 0 to j -->curr
+// step4) sum(i to j) = (curr-prev)= target
+//note  prev=curr-target (o(n))
+
 class Solution {
 public:
     int minSubarray(vector<int>& nums, int p) {
@@ -30,10 +36,8 @@ public:
             if(mp.find(remain) != mp.end()) {
                 result = min(result, j - mp[remain]);
             }
-
             mp[curr] = j;
         }
-
         return result == n ? -1 : result;
 
     }
