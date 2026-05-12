@@ -52,8 +52,7 @@ public:
 
 
 //Approach-3 (Optimal using prefix-sum array)
-//T.C : O(n)
-//S.C : O(n)
+//if prefix[i]=odd then add even count && if prefix[i]=even then add odd count
 class Solution {
 public:
     int M = 1e9+7;
