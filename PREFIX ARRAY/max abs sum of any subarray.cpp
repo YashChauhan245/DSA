@@ -1,6 +1,7 @@
 https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/description/
 
-//Approach-(2 Pass - Kadane's Algorithm for maxsubarrysum and minsybarraysum)
+//Approach-max(maxsubarraysum,minsubarrysum)
+//(2 Pass - Kadane's Algorithm for maxsubarrysum and minsybarraysum)
 //T.C : O(2*n) ~= O(n)
 //S.C : O(1)
 class Solution {
