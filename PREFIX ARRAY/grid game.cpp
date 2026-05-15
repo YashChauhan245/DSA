@@ -1,5 +1,6 @@
 https://leetcode.com/problems/grid-game/description/
 
+//approach -->r1 will try to maximize his path so that r2 will get minimized path
 class Solution {
 public:
     long long gridGame(vector<vector<int>>& grid) {
