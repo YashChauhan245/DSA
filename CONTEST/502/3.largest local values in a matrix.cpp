@@ -1,6 +1,6 @@
 https://leetcode.com/problems/largest-local-values-in-a-matrix-ii/
 
-//MY APPROACH-->TLE
+//MY APPROACH-->TLE o(n4)
 class Solution {
 public:
     int countLocalMaximums(vector<vector<int>>& matrix) {
@@ -49,3 +49,6 @@ public:
         return count;
     }
 };
+
+
+//Optimal --->range sum query/segment tree
