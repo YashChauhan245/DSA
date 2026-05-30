@@ -1,31 +1,32 @@
 https://github.com/doocs/leetcode/blob/main/solution/0300-0399/0370.Range%20Addition/README_EN.md
 
-/*
-  Logic : Only update the "start" index because the further updates ( > start) will be taken
-  care while doing cumulative sum.
-  But we don't want elements after "end" index to be updated, so we substract the update_value
-  from ("end"+1) index because cuulative sum will even things out for me.
-*/
-
 class Solution {
 public:
-    vector<int> getModifiedArray(int length, vector<vector<int>> &updates) {
-        vector<int> nums(length);
+    vector<int> getModifiedArray(int n, vector<vector<int>>& updates) {
 
-        for(vector<int> &vec : updates) {
-            int start    = vec[0];
-            int end_next = vec[1]+1;
-            int update   = vec[2];
-            
-            nums[start] += update;
-            if(end_next < length)
-                nums[end_next] -= update;
+        vector<int> ans(n, 0);
 
+        // Difference array
+        vector<int> psum(n + 1, 0);
+
+        // For each update [l, r, val]:
+        // start adding val at l
+        // stop adding val after r
+        for (int i = 0; i < updates.size(); i++) {
+          //[updates[i][0]] & [updates[i][1+1]] me store kro [updates[i][2]] acc to sign
+            psum[updates[i][0]] += updates[i][2];    
+            psum[updates[i][1] + 1] -= updates[i][2];
         }
 
-        for(int i = 1; i<length; i++)
-            nums[i] += nums[i-1];
+        // Prefix sum converts difference array
+        // into the final modified array
+        int sum = 0;
 
-        return nums;
+        for (int i = 0; i < n; i++) {
+            sum += psum[i];
+            ans[i] = sum;
+        }
+
+        return ans;
     }
 };
