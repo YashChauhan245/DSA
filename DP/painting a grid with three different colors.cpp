@@ -1,0 +1,143 @@
+https://leetcode.com/problems/painting-a-grid-with-three-different-colors/description/
+
+
+//Recursion 
+
+// class Solution {
+// public:
+//     vector<string> columnStates;
+//     const int MOD = 1e9 + 7;
+
+//     // Recursively generate all valid column colorings of height 'rows'
+//     // such that no two vertically adjacent cells have the same color
+//     void generateColumnStates(string currentColumn, int rowsRemaining, char prevColor) {
+//         if (rowsRemaining == 0) {
+//             columnStates.push_back(currentColumn);
+//             return;
+//         }
+
+//         // Colors: 'R' = Red, 'G' = Green, 'B' = Blue
+//         for (char color : {'R', 'G', 'B'}) {
+//             if (color == prevColor)
+//                 continue;  // adjacent vertical cells must be different
+
+//             generateColumnStates(currentColumn + color, rowsRemaining - 1, color);
+//         }
+//     }
+
+//     int solve(int remainingCols, int prevColumnIdx, int m) {
+//         if (remainingCols == 0)
+//             return 1;
+
+//         long long totalWays = 0;
+//         string prevColumn = columnStates[prevColumnIdx];
+
+//         for (int nextColumnIdx = 0; nextColumnIdx < columnStates.size(); nextColumnIdx++) {
+//             string nextColumn = columnStates[nextColumnIdx];
+//             bool valid = true;
+
+//             // Check horizontal adjacency (no adjacent same color in same row)
+//             for (int r = 0; r < m; r++) {
+//                 if (prevColumn[r] == nextColumn[r]) {
+//                     valid = false;
+//                     break;
+//                 }
+//             }
+
+//             if (valid) {
+//                 totalWays =
+//                     (totalWays + solve(remainingCols - 1, nextColumnIdx, m)) % MOD;
+//             }
+//         }
+
+//         return totalWays;
+//     }
+
+//     int colorTheGrid(int m, int n) {
+//         columnStates.clear();
+//         generateColumnStates("", m, '#');  // '#' indicates no previous color
+
+//         int numColumnPatterns = columnStates.size();
+
+//         long long result = 0;
+
+//         for (int i = 0; i < numColumnPatterns; i++) {
+//             result = (result + solve(n - 1, i, m)) % MOD;
+//         }
+
+//         return result;
+//     }
+// };
+
+
+//TOP DOWN 
+class Solution {
+public:
+    vector<vector<int>> dp;
+    vector<string> columnStates;
+    const int MOD = 1e9 + 7;
+
+    // Generate all valid column patterns
+    void generateColumnStates(string currentColumn, int rowsRemaining, char prevColor) {
+        if (rowsRemaining == 0) {
+            columnStates.push_back(currentColumn);
+            return;
+        }
+
+        for (char color : {'R', 'G', 'B'}) {
+            if (color == prevColor)
+                continue;
+
+            generateColumnStates(currentColumn + color, rowsRemaining - 1, color);
+        }
+    }
+
+    int solve(int remainingCols, int prevColumnIdx, int m) {
+        if (remainingCols == 0)
+            return 1;
+
+        if (dp[remainingCols][prevColumnIdx] != -1)
+            return dp[remainingCols][prevColumnIdx];
+
+        long long totalWays = 0;
+        string prevColumn = columnStates[prevColumnIdx];
+
+        for (int nextColumnIdx = 0; nextColumnIdx < columnStates.size(); nextColumnIdx++) {
+
+            string nextColumn = columnStates[nextColumnIdx];
+            bool valid = true;
+
+            // Check horizontal adjacency
+            for (int r = 0; r < m; r++) {
+                if (prevColumn[r] == nextColumn[r]) {
+                    valid = false;
+                    break;
+                }
+            }
+            if (valid) {
+                totalWays =
+                    (totalWays + solve(remainingCols - 1, nextColumnIdx, m)) % MOD;
+            }
+        }
+
+        return dp[remainingCols][prevColumnIdx] = totalWays;
+    }
+
+    int colorTheGrid(int m, int n) {
+
+        columnStates.clear();
+        generateColumnStates("", m, '#');
+
+        int numColumnPatterns = columnStates.size();
+
+        // dp[remainingCols][prevPattern]
+        dp.assign(n, vector<int>(numColumnPatterns, -1));
+
+        long long result = 0;
+
+        for (int i = 0; i < numColumnPatterns; i++) {
+            result = (result + solve(n - 1, i, m)) % MOD;
+        }
+        return result;
+    }
+};
