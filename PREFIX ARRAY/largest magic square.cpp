@@ -1,7 +1,7 @@
 https://leetcode.com/problems/largest-magic-square/description/?envType=daily-question&envId=2026-06-15
 
 
-//Approach->cum.sum of row and colm then check possible n*m grid and check one by one 
+//approach->cum.sum of row and colm then check possible n*m grid and check one by one 
 class Solution {
 public:
     int largestMagicSquare(vector<vector<int>>& grid) {
@@ -33,12 +33,12 @@ public:
             // Check square of length = side starting from all possible cells
             for (int i = 0; i + side - 1 < rows; ++i) {
                 for (int j = 0; j + side - 1 < cols; ++j) {
-
+                    //target sum =>1st row sum 
                     int targetSum = rowCumsum[i][j + side - 1] - (j > 0 ? rowCumsum[i][j - 1] : 0);
 
                     bool allSame = true;
 
-                    // Check rows
+                    // Check sum of remaining rows
                     for (int r = i + 1; r < i + side; ++r) {
                         int rowSum = rowCumsum[r][j + side - 1] - (j > 0 ? rowCumsum[r][j - 1] : 0);
                         if (rowSum != targetSum) {
