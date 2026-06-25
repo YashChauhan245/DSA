@@ -1,4 +1,4 @@
-https://leetcode.com/problems/majority-element-ii/submissions/1674752881/
+https://leetcode.com/problems/majority-element-ii/
 
 
 
