@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/majority-element/submissions/1672582652/
+https://leetcode.com/problems/majority-element/description/
 
 
 class Solution {
