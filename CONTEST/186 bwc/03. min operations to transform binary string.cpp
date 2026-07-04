@@ -31,15 +31,15 @@ public:
 
                 int len = i-start;
 
-                ans += len/2;
+                ans += len/2;  //even block
 
-                if(len%2){
-
+                if(len%2){  //for odd block now one '1' is left so just convert neighbour and apply operation 2
+  
                     // single character string impossible
                     if(n==1)
                         return -1;
 
-                    ans += 2;
+                    ans += 2;//2 operations-->0 to 1 && pair operation 
                 }
             }
         }
