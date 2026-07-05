@@ -1,5 +1,8 @@
 https://leetcode.com/problems/subsequence-after-one-replacement/description/
 
+
+https://www.youtube.com/watch?v=EwxiqOkruL4
+
 class Solution {
 public:
     bool canMakeSubsequence(string s, string t) {
