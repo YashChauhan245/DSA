@@ -1,0 +1,27 @@
+https://leetcode.com/problems/construct-uniform-parity-array-ii/description/?envType=daily-question&envId=2026-09-03
+
+
+
+/*
+if smallest number odd then ans true 
+if smallest number even then check if there is any odd number in array if present then false
+*/
+class Solution {
+public:
+    bool uniformArray(vector<int>& nums1) {
+        int minEl = *min_element(begin(nums1), end(nums1));
+
+        if(minEl % 2 == 1) { //odd - then we can convert all even to odd
+            return true; //all nums2 will be odd
+        }
+
+        //check if we can make all even in nums2
+        for(int &num : nums1) {
+            if(num % 2 == 1) {
+                return false;
+            }
+        }
+
+        return true; //all nums2 will be even
+    }
+};
